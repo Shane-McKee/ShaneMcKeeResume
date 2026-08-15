@@ -1,287 +1,540 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane McKee — Resume</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #23262b;
+    --ink-muted: #565c66;
+    --accent: #1f5065;
+    --accent-soft: #dbe6e9;
+    --accent-tint: #eef4f5;
+    --accent-on-dark: #a9cbd6;
+    --rule: #e2e4e8;
 
-     <title>Shane McKee Resume</title>
+    --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 
-     <style type="text/css">
-        * { margin: 0; padding: 0; }
-        body { font: 16px Helvetica, Sans-Serif; line-height: 24px; background: url(images/noise.jpg); }
-        .clear { clear: both; }
-        #page-wrap { width: 800px; margin: 40px auto 60px; }
-        #pic { float: right; margin: -30px 30px 0 0; width: 128px; height: 170px; border-style: ridge;}
-        h1 { margin: 0 0 16px 0; padding: 0 0 16px 0; font-size: 42px; font-weight: bold; letter-spacing: -2px; border-bottom: 1px solid #999; }
-        h2 { font-size: 20px; margin: 0 0 6px 0; position: relative; }
-        h2 span { position: absolute; bottom: 0; right: 0; font-style: italic; font-family: Georgia, Serif; font-size: 16px; color: #999; font-weight: normal; }
-        p { margin: 0 0 16px 0; }
-        a { color: #999; text-decoration: none; border-bottom: 1px dotted #999; }
-        a:hover { border-bottom-style: solid; color: black; }
-        ul { margin: 0 0 32px 17px; }
-        #objective { width: 650px; float: left; }
-        #objective p { font-family: Georgia, Serif; font-style: italic; color: #666; }
-        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
-        dt.short { height: 40px; }
-        dt.medium-short { height: 280px; }
-        dt.medium { height: 400px; }
-        dt.long { height: 600px; }
-        dd { width: 600px; float: right; }
-        dd.clear { float: none; margin: 0; height: 15px; }
-     </style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3.25rem 2rem 5rem;
+  }
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink-muted);
+  }
+
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color .15s ease, border-color .15s ease; }
+  }
+
+  ul, ol { list-style: none; }
+
+  p + p { margin-top: 1rem; }
+
+  /* Header — full-bleed masthead band */
+
+  .header {
+    background: var(--ink);
+    border-bottom: 3px solid var(--accent);
+    margin-bottom: 3rem;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 2.75rem;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5vw, 2.75rem);
+    letter-spacing: -0.01em;
+    color: #f5f2ea;
+    margin-bottom: 1.1rem;
+  }
+
+  .header .contact-list { color: #9198a3; }
+  .header .contact-list li { border-left-color: rgba(255, 255, 255, .16); }
+  .header .contact-list a { color: var(--accent-on-dark); border-bottom-color: rgba(169, 203, 214, .45); }
+  .header .contact-list a:hover { color: #ffffff; border-bottom-color: #ffffff; }
+  .header .contact-list a:focus-visible { outline-color: var(--accent-on-dark); }
+
+  /* Reusable divided inline list (contact info, expertise tags) */
+
+  .meta-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    font-size: .95rem;
+    color: var(--ink-muted);
+  }
+
+  .meta-list li {
+    padding: 0 1rem;
+    border-left: 1px solid var(--rule);
+  }
+
+  .meta-list li:first-child { padding-left: 0; border-left: 0; }
+
+  .meta-list a { color: var(--ink-muted); }
+  .meta-list a:hover { color: var(--accent); }
+
+  /* Expertise tags */
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+
+  .tag-list li {
+    padding: .4rem .95rem;
+    border: 1px solid var(--accent-soft);
+    border-radius: 999px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+
+  /* Section headings */
+
+  section { margin-bottom: 3rem; }
+  section:last-child { margin-bottom: 0; }
+
+  .eyebrow-heading {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1.1rem;
+  }
+
+  .eyebrow-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--accent-soft);
+  }
+
+  /* Objective */
+
+  .objective-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 62ch;
+  }
+
+  /* Experience timeline */
+
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--accent-soft);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.75rem;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+
+  .job-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: .25rem 1.5rem;
+  }
+
+  .job-head h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .job-meta {
+    font-size: .85rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  .job-title {
+    font-weight: 600;
+    color: var(--accent);
+    margin: .2rem 0 .85rem;
+  }
+
+  .timeline-item ul {
+    margin-top: .85rem;
+  }
+
+  .timeline-item li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: .5rem;
+  }
+
+  .timeline-item li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .6em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ink-muted);
+  }
+
+  /* Education */
+
+  .education h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: .35rem;
+  }
+
+  @media print {
+    body { color: #000; }
+    .header { background: none; border-bottom: 2px solid #000; margin-bottom: 2rem; }
+    .header-inner { padding: 0 0 1.5rem; }
+    h1 { color: #000; }
+    .header .contact-list { color: #333; }
+    .header .contact-list li { border-left-color: #ccc; }
+    .header .contact-list a { color: #000; border-bottom-color: #000; }
+    .eyebrow-heading, .job-title { color: #333; }
+    .eyebrow-heading::after { background: #ccc; }
+    a { color: #000; border-bottom-color: #000; }
+    .tag-list li { background: none; border-color: #999; color: #000; }
+    .timeline::before { background: #999; }
+    .timeline-item::before { background: #000; box-shadow: none; }
+    .timeline-item { break-inside: avoid; }
+    .page { padding: 0; max-width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .header-inner { padding: 2.5rem 1.25rem 2.25rem; }
+    .page { padding: 2.5rem 1.25rem 3rem; }
+    .timeline { padding-left: 22px; }
+    .timeline-item::before { left: -20px; }
+    .job-head { flex-direction: column; align-items: flex-start; gap: .25rem; }
+  }
+</style>
 </head>
 
 <body>
 
-    <div id="page-wrap">
-    
-        <img src="images/shane.jpg" alt="Photo of Shane McKee" id="pic" />
-    
-        <div id="contact-info" class="vcard">
-        
-            <!-- Microformats! -->
-        
-            <h1 class="fn">Shane McKee</h1>
-        
-            <p>
-                Address: Litchfield Park, AZ 85340<br />
-                Cell: <span class="tel">602.741.0447</span><br />
-                Email: <a class="email" href="mailto:shaneamckee@yahoo.com">shaneamckee@yahoo.com</a>
-            </p>
-        </div>
-                
-        <div id="objective">
-            <p>
-                Dedicated and results-driven Director of IT with experience in leading technology 
-                initatives and optimizing organizational efficiency. Proven track record of successfully 
-                aligning IT strategies with business objectives, implementing cutting-edge solutions, 
-                and managing cross-functional teams. Adept at driving innovation and enhancing culture. 
-                Strong communicator and leader, adept at building relationships and fostering collaboration 
-                across departments.
-            </p>
-        </div>
-        
-        <div class="clear"></div>
-        
-        <dl>
-            <dd class="clear"></dd>
-            
-            <dt>Education</dt>
-            <dd>
-                <h2>University of California at Santa Barbara</h2>
-                <p><strong>Bachelor of Arts, </strong>Law and Society<br />
-            </dd>
-            
-            <dd class="clear"></dd>
-            
-            <dt>Expertise</dt>
-            <dd>
-                <p>
-                    Information Technology | Enterprise Architecture | Innovation | Legacy Software Modernization 
-                    | Quality Assurance | Software Development Life Cycle (SDLC) | Agile Methodoligies 
-                    | Platform Development | Cross Functional Team Leadership
-                </p> 
-            </dd>
-            
-            <dd class="clear"></dd>
-            
-            <dt class="long">Experience</dt>
-            <dd>
-                <h2>BMO<span> Tempe AZ - March 2021 - December 2023</span></h2>
-                <h3>Director, Technology Platform</h3>
-                <p>
-                    Led two teams including the centralized api team and the content management team. Changed the culture 
-                    of both teams by implementing agile, OKR's, enhanced processes, and delivering the highest value outcomes
-                    for the organization. Decreased turnover and increased hiring of staff on both teams. 
-                </p>
-                <ul>
-                    <li>
-                        Adopted agile and improved development processes to dramatically improve team culture as demonstrated by 
-                        greatly reduced attrition and turnover by 85&percnt;
-                    </li>
-                    <li>
-                        Created and managed over 250 api's that powered the highest value applications in the bank.
-                        For example the Payment Protection Plan (PPP) generated nearly $500 million to the bank in it's first year.
-                    </li>
-                    <li>Implemented a protocol and cadence to create and enchance new functionality to the api platform.</li>
-                    <li>
-                        Led innovation teams with the ASU Luminosity innovation labs that developed students and faculty on cutting-edge 
-                        solutions that drive real business value. We created a document deconstruction platform that stored the data in 
-                        DynamoDB and enhanced the meta data with genrative AI.
-                    </li>
-                    <li>
-                        Launched an api governance and review program that ensured development, communication, security, and audit 
-                        requirements were always met.
-                    </li>
-                    <li>Mentored and coached leaders and individual contributors to deliver the best outcomes.</li>
-                    <li>Worked across multiple business units to ensure success and meet or exceed set goals.</li>
-                </ul>
-            </dd>
-                
-            <dd class="clear"></dd>
+  <header class="header vcard">
+    <div class="header-inner">
+      <h1 class="fn">Shane McKee</h1>
 
-            <dt class="long"></dt>
-            <dd>
-                <h2>Best Western<span> Phoenix AZ - July 2020 - March 2021</span></h2>
-                <h3>Cloud First Strategist <span style="font-weight: lighter;">(Self Employed)</span></h3>
-                <p>
-                    Built an implementation team to deliver on strategy to create a cloud first reservation creation and delivery platform
-                    for Best Western. Managed developers on and offshore to create the first implementation of the platform targeting 
-                    the Oracle property management system.
-                </p>
-                <ul>
-                    <li>
-                        Adopted agile and improved development processes to dramatically improve culture as demonstrated by greatly
-                        reduced attrition and turnover by 85&percnt;
-                    </li>
-                    <li>
-                        Created and managed over 250 api's that powered the highest value applications in the bank.
-                        For example the Payment Protection Plan (PPP) generated nearly $500 million to the bank in it's first year.
-                    </li>
-                    <li>Implemented a protocol and cadence to create and enchance new functionality to the api platform.</li>
-                    <li>
-                        Led innovation teams with the ASU Luminosity innovation labs that developed students and faculty on cutting-edge 
-                        solutions that drive real business value. We created a document deconstruction platform that stored the data in DynamoDB
-                        and enhanced the meta data with genrative AI.
-                    </li>
-                    <li>
-                        Launched an api governance and review program tat ensured development, communication, security, and audit requirements 
-                        were always met.
-                    </li>
-                    <li>Mentored and coached leaders and individual contributors to deliver the best outcomes.</li>
-                    <li>Worked across multiple business units to ensure success and meet or exceed set goals.</li>
-                </ul>
-            </dd>
-
-            <dd class="clear"></dd>
-
-            <dt class="medium"></dt>
-            <dd>
-                <h2>Best Western<span> Phoenix AZ - August 2017 - March 2020</span></h2>
-                <h3>Director, Technology Management</h3>
-                <p>
-                    Rearchitected the entire reservation deliver system to a cloud first reservation platform. This platform is 
-                    designed to extend the reach and capabilities for almost any property management system. In addition to driving
-                    highest value systems to the cloud, I developed and mentored leaders in devops, quality engineering and
-                    architecture.
-                </p>
-                <ul>
-                    <li>
-                        Developed a strategy and architecture to reimagine the entire reservation delivery system as a cloud first 
-                        platform.
-                    </li>
-                    <li>
-                        Reduced turnover, increased hiring, implemented strong agile practices, and created a culture of high 
-                        performance while delivering the highest value outcomes for the organization.
-                    </li>
-                    <li>Transformed the QA team of manual tester to a QE team of automated testers.</li>
-                    <li>
-                        Worked with application owners to architect and troubleshoot applications in AWS for disaster recovery.
-                    </li>
-                </ul>
-            </dd>
-
-            <dd class="clear"></dd>
-
-            <dt class="medium"></dt>
-            <dd>
-                <h2>Best Western<span> Phoenix AZ - August 2015 - March 2017</span></h2>
-                <h3>Senior IT Manager</h3>
-                <p>
-                    Deconstructed and modernized the website by breaking up the monolith into web service api's and introduced
-                    a content management system. This new platform allows development and business to rapidly iterate and provide booking
-                    capabilities while using A/B testing to increase revenue.
-                </p>
-                <ul>
-                    <li>
-                        Increased revenue by $250 million by reducing downtime, delivering feature, and working with e-Commerce for a 
-                        consumer driven experience. By performing A/B testing we were able to identify the most effective calls to action 
-                        and color palettes.
-                    </li>
-                    <li>
-                        Transformed the wwww.bestwestern.com website from a monolith into a modern platform using a content management system
-                        and micro services. 
-                    </li>
-                    <li>
-                        Created and leveraged a suite of api web services inside Adobe AEM producing and consuming json.
-                    </li>
-                </ul>
-            </dd>            
-            
-            <dd class="clear"></dd>
-
-            <dt class="medium"></dt>
-            <dd>
-                <h2>Best Western<span> Phoenix AZ - August 2011 - August 2015</span></h2>
-                <h3>IT Architect</h3>
-                <p>
-                    Built the core patterns and structures for the 140+ microservices and restful web services that power the website, 
-                    mobile apps, call center. Modernized the legacy systems to a modern architecture to capitalize on horizontal 
-                    growth. Updated and removed Oracle forms and stored procedures where reasonable.
-                </p>
-                <ul>
-                    <li>
-                        Developed a strategy for restfule web services and micro services as our core business engine.
-                    </li>
-                    <li>
-                        Created the core patterns, code coverage, pipelines, standards and build tools leveraging DevOps where possible 
-                        for Best Western. 
-                    </li>
-                    <li>
-                        Worked closely with all the development teams to refactor jsp/stored procedures and adopt to new architectural
-                        patterns. This allowed the business to deliver value faster.
-                    </li>
-                    <li>
-                        Created new revenue streams for Best Western Rewards and other business verticals.
-                    </li>
-                </ul>
-            </dd>
-            
-            <dd class="clear"></dd>
-
-            <dt class="medium-short"></dt>
-            <dd>
-                <h2>NOVAHEAD, INC.<span> Phoenix AZ - January 2001 - January 2009</span></h2>
-                <h3>Chief Technology Officer</h3>
-                <p>
-                    Created this company as one of 3 founders. The company focused on developing a next generation software application 
-                    that was often used as middleware for large organizations in the military and defense contractors.
-                </p>
-                <ul>
-                    <li>
-                        Grew the company to execute on projects.
-                    </li>
-                    <li>
-                        Worked with investors for operating capital.
-                    </li>
-                    <li>
-                        Created applications for Raytheon utilizing our Exponential middleware application.
-                    </li>
-                    <li>
-                        Extended our reach to Florida National Gaurd and Snow goose operations.
-                    </li>
-                </ul>
-            </dd>            
-            
-            <dd class="clear"></dd>
-            
-            <dt class="short">References</dt>
-            <dd>Available on request</dd>
-            
-            <dd class="clear"></dd>
-            
-            <dt class="short">LinkedIn</dt>
-            <dd>Profile: <a href="https://www.linkedin.com/in/shaneamckee/">Shane McKee</a></dd>
-
-            <dd class="clear"></dd>
-        </dl>
-        
-        <div class="clear"></div>
-    
+      <ul class="meta-list contact-list">
+        <li class="adr">Litchfield Park, AZ 85340</li>
+        <li><a class="tel" href="tel:+16027410447">602.741.0447</a></li>
+        <li><a class="email" href="mailto:shaneamckee@yahoo.com">shaneamckee@yahoo.com</a></li>
+        <li><a href="https://www.linkedin.com/in/shaneamckee/">LinkedIn</a></li>
+      </ul>
     </div>
+  </header>
+
+  <div class="page">
+
+    <main>
+
+      <section aria-labelledby="objective-heading">
+        <h2 id="objective-heading" class="eyebrow-heading">Objective</h2>
+        <p class="objective-text">
+          Dedicated and results-driven Director of IT with experience in leading technology
+          initatives and optimizing organizational efficiency. Proven track record of successfully
+          aligning IT strategies with business objectives, implementing cutting-edge solutions,
+          and managing cross-functional teams. Adept at driving innovation and enhancing culture.
+          Strong communicator and leader, adept at building relationships and fostering collaboration
+          across departments.
+        </p>
+      </section>
+
+      <section aria-labelledby="expertise-heading">
+        <h2 id="expertise-heading" class="eyebrow-heading">Expertise</h2>
+        <ul class="tag-list">
+          <li>Information Technology</li>
+          <li>Enterprise Architecture</li>
+          <li>Innovation</li>
+          <li>Legacy Software Modernization</li>
+          <li>Quality Assurance</li>
+          <li>Software Development Life Cycle (SDLC)</li>
+          <li>Agile Methodoligies</li>
+          <li>Platform Development</li>
+          <li>Cross Functional Team Leadership</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="experience-heading">
+        <h2 id="experience-heading" class="eyebrow-heading">Experience</h2>
+
+        <ol class="timeline">
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-bmo-heading">
+              <div class="job-head">
+                <h3 id="job-bmo-heading">BMO</h3>
+                <p class="job-meta">Tempe, AZ &middot; March 2021 &ndash; December 2023</p>
+              </div>
+              <p class="job-title">Director, Technology Platform</p>
+              <p>
+                Led two teams including the centralized api team and the content management team. Changed the culture
+                of both teams by implementing agile, OKR's, enhanced processes, and delivering the highest value outcomes
+                for the organization. Decreased turnover and increased hiring of staff on both teams.
+              </p>
+              <ul>
+                <li>
+                  Adopted agile and improved development processes to dramatically improve team culture as demonstrated by
+                  greatly reduced attrition and turnover by 85%
+                </li>
+                <li>
+                  Created and managed over 250 api's that powered the highest value applications in the bank.
+                  For example the Payment Protection Plan (PPP) generated nearly $500 million to the bank in it's first year.
+                </li>
+                <li>Implemented a protocol and cadence to create and enchance new functionality to the api platform.</li>
+                <li>
+                  Led innovation teams with the ASU Luminosity innovation labs that developed students and faculty on cutting-edge
+                  solutions that drive real business value. We created a document deconstruction platform that stored the data in
+                  DynamoDB and enhanced the meta data with genrative AI.
+                </li>
+                <li>
+                  Launched an api governance and review program that ensured development, communication, security, and audit
+                  requirements were always met.
+                </li>
+                <li>Mentored and coached leaders and individual contributors to deliver the best outcomes.</li>
+                <li>Worked across multiple business units to ensure success and meet or exceed set goals.</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-bw1-heading">
+              <div class="job-head">
+                <h3 id="job-bw1-heading">Best Western</h3>
+                <p class="job-meta">Phoenix, AZ &middot; July 2020 &ndash; March 2021</p>
+              </div>
+              <p class="job-title">Cloud First Strategist (Self Employed)</p>
+              <p>
+                Built an implementation team to deliver on strategy to create a cloud first reservation creation and delivery platform
+                for Best Western. Managed developers on and offshore to create the first implementation of the platform targeting
+                the Oracle property management system.
+              </p>
+              <ul>
+                <li>
+                  Adopted agile and improved development processes to dramatically improve culture as demonstrated by greatly
+                  reduced attrition and turnover by 85%
+                </li>
+                <li>
+                  Created and managed over 250 api's that powered the highest value applications in the bank.
+                  For example the Payment Protection Plan (PPP) generated nearly $500 million to the bank in it's first year.
+                </li>
+                <li>Implemented a protocol and cadence to create and enchance new functionality to the api platform.</li>
+                <li>
+                  Led innovation teams with the ASU Luminosity innovation labs that developed students and faculty on cutting-edge
+                  solutions that drive real business value. We created a document deconstruction platform that stored the data in DynamoDB
+                  and enhanced the meta data with genrative AI.
+                </li>
+                <li>
+                  Launched an api governance and review program tat ensured development, communication, security, and audit requirements
+                  were always met.
+                </li>
+                <li>Mentored and coached leaders and individual contributors to deliver the best outcomes.</li>
+                <li>Worked across multiple business units to ensure success and meet or exceed set goals.</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-bw2-heading">
+              <div class="job-head">
+                <h3 id="job-bw2-heading">Best Western</h3>
+                <p class="job-meta">Phoenix, AZ &middot; August 2017 &ndash; March 2020</p>
+              </div>
+              <p class="job-title">Director, Technology Management</p>
+              <p>
+                Rearchitected the entire reservation deliver system to a cloud first reservation platform. This platform is
+                designed to extend the reach and capabilities for almost any property management system. In addition to driving
+                highest value systems to the cloud, I developed and mentored leaders in devops, quality engineering and
+                architecture.
+              </p>
+              <ul>
+                <li>
+                  Developed a strategy and architecture to reimagine the entire reservation delivery system as a cloud first
+                  platform.
+                </li>
+                <li>
+                  Reduced turnover, increased hiring, implemented strong agile practices, and created a culture of high
+                  performance while delivering the highest value outcomes for the organization.
+                </li>
+                <li>Transformed the QA team of manual tester to a QE team of automated testers.</li>
+                <li>
+                  Worked with application owners to architect and troubleshoot applications in AWS for disaster recovery.
+                </li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-bw3-heading">
+              <div class="job-head">
+                <h3 id="job-bw3-heading">Best Western</h3>
+                <p class="job-meta">Phoenix, AZ &middot; August 2015 &ndash; March 2017</p>
+              </div>
+              <p class="job-title">Senior IT Manager</p>
+              <p>
+                Deconstructed and modernized the website by breaking up the monolith into web service api's and introduced
+                a content management system. This new platform allows development and business to rapidly iterate and provide booking
+                capabilities while using A/B testing to increase revenue.
+              </p>
+              <ul>
+                <li>
+                  Increased revenue by $250 million by reducing downtime, delivering feature, and working with e-Commerce for a
+                  consumer driven experience. By performing A/B testing we were able to identify the most effective calls to action
+                  and color palettes.
+                </li>
+                <li>
+                  Transformed the wwww.bestwestern.com website from a monolith into a modern platform using a content management system
+                  and micro services.
+                </li>
+                <li>
+                  Created and leveraged a suite of api web services inside Adobe AEM producing and consuming json.
+                </li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-bw4-heading">
+              <div class="job-head">
+                <h3 id="job-bw4-heading">Best Western</h3>
+                <p class="job-meta">Phoenix, AZ &middot; August 2011 &ndash; August 2015</p>
+              </div>
+              <p class="job-title">IT Architect</p>
+              <p>
+                Built the core patterns and structures for the 140+ microservices and restful web services that power the website,
+                mobile apps, call center. Modernized the legacy systems to a modern architecture to capitalize on horizontal
+                growth. Updated and removed Oracle forms and stored procedures where reasonable.
+              </p>
+              <ul>
+                <li>
+                  Developed a strategy for restfule web services and micro services as our core business engine.
+                </li>
+                <li>
+                  Created the core patterns, code coverage, pipelines, standards and build tools leveraging DevOps where possible
+                  for Best Western.
+                </li>
+                <li>
+                  Worked closely with all the development teams to refactor jsp/stored procedures and adopt to new architectural
+                  patterns. This allowed the business to deliver value faster.
+                </li>
+                <li>
+                  Created new revenue streams for Best Western Rewards and other business verticals.
+                </li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item">
+            <article aria-labelledby="job-novahead-heading">
+              <div class="job-head">
+                <h3 id="job-novahead-heading">NOVAHEAD, INC.</h3>
+                <p class="job-meta">Phoenix, AZ &middot; January 2001 &ndash; January 2009</p>
+              </div>
+              <p class="job-title">Chief Technology Officer</p>
+              <p>
+                Created this company as one of 3 founders. The company focused on developing a next generation software application
+                that was often used as middleware for large organizations in the military and defense contractors.
+              </p>
+              <ul>
+                <li>Grew the company to execute on projects.</li>
+                <li>Worked with investors for operating capital.</li>
+                <li>Created applications for Raytheon utilizing our Exponential middleware application.</li>
+                <li>Extended our reach to Florida National Gaurd and Snow goose operations.</li>
+              </ul>
+            </article>
+          </li>
+
+        </ol>
+      </section>
+
+      <section class="education" aria-labelledby="education-heading">
+        <h2 id="education-heading" class="eyebrow-heading">Education</h2>
+        <h3>University of California, Santa Barbara</h3>
+        <p><strong>Bachelor of Arts,</strong> Law and Society</p>
+      </section>
+
+      <section aria-labelledby="references-heading">
+        <h2 id="references-heading" class="eyebrow-heading">References</h2>
+        <p>Available on request</p>
+      </section>
+
+    </main>
+
+  </div>
 
 </body>
-
 </html>
